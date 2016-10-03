@@ -6,6 +6,7 @@ import { RunsService } from "../runs.service";
 import { Job } from "../../models/job";
 import { Run } from "../../models/run";
 import { SearchPipe } from "../search.pipe";
+import { Title }     from '@angular/platform-browser';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class JobsComponent implements OnInit {
 
   constructor(private jobService: JobsService,
               private runService: RunsService,
-              private router: Router) { }
+              private router: Router,
+              private titleService: Title) { }
 
   jobs: Job[] = [];
   forms: Object = {}
@@ -27,6 +29,7 @@ export class JobsComponent implements OnInit {
 
   ngOnInit() {
     this.fetchJobs();
+    this.titleService.setTitle("G5 DataWarehouse");
   }
 
   fetchJobs() {
