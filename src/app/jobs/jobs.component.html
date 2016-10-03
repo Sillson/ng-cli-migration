@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-2">
+    <h2 class="page-header">Jobs</h2>
+  </div>
+  <div class="col-sm-10">
+    <input type="text" [(ngModel)]="search" placeholder="Search" class="form-control"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 card-columns">
+    <div class="card" *ngFor="let job of (jobs | search:search)" >
+      <h4 class="card-header"><a routerLink="/jobs/:job_name/runs['JobRuns', {job_name: job.name}]">{{job.name}}</a></h4>
+      <div class="card-block">
+        <p class="card-text">{{job.description}}</p>
+      </div>
+      <div class="card-block">
+        <form>
+          <fieldset class="form-group" *ngFor="let param of job.params">
+            <label>{{param.name}}</label>
+            <input type="text" class="form-control" [id]="param.name" placeholder="2016-01-01" [(ngModel)]="forms[job.name][param.name]" />
+            <small class="text-muted">{{param.description}}</small>
+          </fieldset>
+        </form>
+        <button class="btn btn-primary-outline" (click)="runJob(job.name)">Run</button>
+      </div>
+      <!--<div class="card-footer text-muted">-->
+        <!--2 days ago-->
+      <!--</div>-->
+    </div>
+  </div>
+</div>
+

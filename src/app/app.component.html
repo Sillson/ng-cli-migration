@@ -1,3 +1,11 @@
-<h1>
-  {{title}}
-</h1>
+<div class="page">
+  <nav class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" routerLink="/jobs">G5 Data Warehouse</a>
+    <a class="nav-item nav-link" routerLink="/jobs">Jobs</a>
+    <a class="nav-item nav-link" routerLink="/runs">Runs</a>
+    <a class="nav-item nav-link pull-xs-right" href="/g5_auth/users/sign_out">Logout</a>
+  </nav>
+  <div class="page-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
