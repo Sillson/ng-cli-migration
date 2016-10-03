@@ -9,7 +9,7 @@
 <div class="row">
   <div class="col-sm-12 card-columns">
     <div class="card" *ngFor="let job of (jobs | search:search)" >
-      <h4 class="card-header"><a routerLink="/jobs/:job_name/runs['JobRuns', {job_name: job.name}]">{{job.name}}</a></h4>
+      <h4 class="card-header"><a [routerLink]="['jobs/:job_name/runs', {job_name: job.name}]">{{job.name}}</a></h4>
       <div class="card-block">
         <p class="card-text">{{job.description}}</p>
       </div>

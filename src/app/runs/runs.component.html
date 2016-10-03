@@ -1,3 +1,41 @@
-<p>
-  runs works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2 class="page-header">{{jobName?jobName:'All'}} Runs</h2>
+    </div>
+    <div class="col-sm-4" style="text-align: right;">
+      <a (click)="page = page-1" class="btn btn-primary-outline" *ngIf="page > 0"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+      {{page + 1}}
+      <a (click)="page = page+1" class="btn btn-primary-outline"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Progress</th>
+          <th>Params</th>
+          <th>Started</th>
+          <th>Completed</th>
+        </tr>
+        <template ngFor let-run [ngForOf]="runs | orderBy:'!^completed_at':'!started_at'">
+          <tr (click)="goToRun(run.id)">
+            <td>{{run.id}}</td>
+            <td>{{run.name}}</td>
+            <td><progress-bar [progress]="run.progress" [status]="run.status"></progress-bar></td>
+            <td class="small">
+              <div class="row" *ngFor="let key of (run.params | keys)">
+                <div class="col-sm-6" style="font-weight: 600">{{key}}</div>
+                <div class="col-sm-6">{{run.params[key]}}</div>
+              </div>
+            </td>
+            <td class="small">{{run.started_at | date:'short'}}</td>
+            <td class="small">{{run.completed_at | date:'short'}}</td>
+          </tr>
+        </template>
+      </table>
+    </div>
+  </div>
+</div>

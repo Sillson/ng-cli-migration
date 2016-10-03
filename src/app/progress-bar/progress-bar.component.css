@@ -1,0 +1,6 @@
+progress {
+    height: 2em;
+}
+.progress-label{
+    position: absolute; left: 1em; top: .25em; color: #fff;
+}

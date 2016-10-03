@@ -1,3 +1,9 @@
-<p>
-  progress-bar works!
-</p>
+<div style="position: relative">
+  <progress class="progress" [value]="progress" max="100"
+      [ngClass]="{
+              'progress-success': status==='COMPLETE',
+              'progress-default': status==='QUEUED',
+              'progress-primary': status==='RUNNING',
+              'progress-danger': status==='ERROR'}">{{progress}}%</progress>
+  <span class="progress-label">{{status}}</span>
+</div>

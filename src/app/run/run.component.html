@@ -1,3 +1,19 @@
-<p>
-  run works!
-</p>
+<div style="display: flex; height: 100%; flex-direction: column;">
+  <div class="row">
+    <div class="col-sm-4 h3">{{run.name}}({{run.id}})</div>
+    <div class="col-sm-2">
+      <progress-bar [progress]="run.progress" [status]="run.status" ></progress-bar>
+    </div>
+    <div class="col-sm-3 small">
+      <div class="row" *ngFor="let key of (run.params | keys)">
+        <div class="col-sm-6" style="font-weight: 600">{{key}}</div>
+        <div class="col-sm-6">{{run.params[key]}}</div>
+      </div>
+    </div>
+    <div class="col-sm-2 small">
+      {{run.started_at | date:'short'}}
+    </div>
+    <div class="col-sm-1 h4">{{runningTime}}s</div>
+  </div>
+  <div style="flex: 1;" class="log_container samp" [appLogTail]="run.logs"></div>
+</div>

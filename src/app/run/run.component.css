@@ -1,0 +1,9 @@
+.log_container {
+    width: 100%;
+    white-space: pre-wrap;
+    overflow-y: scroll;
+    background: #333333;
+    color: #eeeeee;
+    padding: 10px;
+    border-radius: 5px;
+}
